@@ -12,10 +12,10 @@ private:
     double x;
     double y;
     double z;
-    Vector3d ();
-    Vector3d(double x, double y, double z);
 
 public:
+    Vector3d ();
+    Vector3d(double x, double y, double z);
     double getX() const;
 
     void setX(double x);
@@ -28,7 +28,7 @@ public:
 
     void setZ(double z);
 
- ;
+
 };
 
 std::istream& operator >> (std::istream &Strm, Vector3d &Wek);

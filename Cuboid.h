@@ -13,11 +13,12 @@ using namespace std;
 class Cuboid {
 private:
     double coordinate[8][3];
+
+public:
     Cuboid ();
     void Sides () const;
     void Move (Vector3d vector3d);
-
-
+    void ViewCoordinate () const;
 };
 
 
