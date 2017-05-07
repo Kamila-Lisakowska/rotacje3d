@@ -7,11 +7,13 @@
 
 #include <iostream>
 #include "Vector3d.h"
+#include "Matrix.h"
 
 using namespace std;
 
 class Cuboid {
-private:
+//private:
+public:
     double coordinate[8][3];
 
 public:
@@ -19,6 +21,7 @@ public:
     void Sides () const;
     void Move (Vector3d vector3d);
     void ViewCoordinate () const;
+    void Multiplication (Matrix m);
 };
 
 

@@ -10,11 +10,14 @@
 
 
 class Matrix {
-private:
+//private:
+public:
     double matrix [3][3];
 public:
     Matrix();
     void LoadMatrixOX (double angle);
+    void LoadMatrixOY (double angle);
+    void LoadMatrixOZ (double angle);
 };
 
 
