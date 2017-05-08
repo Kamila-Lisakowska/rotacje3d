@@ -4,6 +4,9 @@
 
 #include "Cuboid.h"
 #include <cmath>
+#include <iostream>
+#include <iomanip>
+#include <fstream>
 using namespace std;
 
 Cuboid::Cuboid() {
@@ -58,4 +61,26 @@ void Cuboid::Multiplication(Matrix m)  {
             coordinate[i][j]=m.matrix[j][0]*coordinate[i][0]+m.matrix[j][1]*coordinate[i][1]+m.matrix[j][2]*coordinate[i][2];
         }
     }
+}
+
+void Cuboid::SaveToFile(fstream &file) {
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j <3; j++) {
+            file<<coordinate[i][j]<<" ";
+        }
+        i++;
+        file<<"\n";
+        for (int j = 0; j <3; j++) {
+            file<<coordinate[i][j]<<" ";
+        }
+        file<<"\n"<<"\n";
+    }
+        for (int i = 0; i <3; ++i) {
+            file<<coordinate[0][i]<<" ";
+        }
+        file<<"\n";
+    for (int i = 0; i <3; ++i) {
+        file<<coordinate[1][i]<<" ";
+    }
+
 }

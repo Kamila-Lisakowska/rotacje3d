@@ -21,6 +21,7 @@ int main() {
     bool end=true;
     Vector3d wek;
     Cuboid cub;
+    fstream file;
 
 
     menu();
@@ -50,8 +51,13 @@ int main() {
                 cub.Sides();
                 break;
             case 'g':
-                //dopisać
-
+                file.open("cuboid.dat",ios::out | ios::trunc);
+                if(file.good()==true)
+                    cub.SaveToFile(file);
+                else
+                    cout<<"Brak dostepu do pliku"<<endl;
+                file.close();
+                    //wyświetlanie
                 break;
 
         }

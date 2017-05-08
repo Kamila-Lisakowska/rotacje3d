@@ -22,6 +22,7 @@ public:
     void Move (Vector3d vector3d);
     void ViewCoordinate () const;
     void Multiplication (Matrix m);
+    void SaveToFile (fstream &file);
 };
 
 
