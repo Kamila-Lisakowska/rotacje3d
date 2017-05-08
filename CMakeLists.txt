@@ -3,5 +3,5 @@ project(rotacje3d)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(SOURCE_FILES main.cpp Cuboid.cpp Cuboid.h Vector3d.cpp Vector3d.h Matrix.cpp Matrix.h)
+set(SOURCE_FILES main.cpp Cuboid.cpp Cuboid.h Vector3d.cpp Vector3d.h Matrix.cpp Matrix.h lacze_do_gnuplota.cpp lacze_do_gnuplota.h)
 add_executable(rotacje3d ${SOURCE_FILES})
