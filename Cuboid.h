@@ -23,6 +23,8 @@ public:
     void Multiplication (Matrix m);
     void SaveToFile (fstream &file);
     double getCoordinate(int a, int b) const;
+    void Rotate (Matrix &m);
+
 };
 
 

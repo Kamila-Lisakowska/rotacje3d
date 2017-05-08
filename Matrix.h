@@ -19,6 +19,16 @@ public:
     void LoadMatrixOY (double angle);
     void LoadMatrixOZ (double angle);
     double getMatrix (int a, int b);
+    void ShowMatrix () const;
+    Matrix operator * (Matrix b);
+    void setMatrix(double x[3][3])
+    {
+        for (int i = 0; i <3; i++) {
+            for (int j = 0; j <3; j++) {
+                matrix[i][j]=x[i][j];
+            }
+        }
+    }
 };
 
 

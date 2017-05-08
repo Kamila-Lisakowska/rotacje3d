@@ -9,7 +9,9 @@ using namespace std;
 
 void menu()
 {
-    cout << "o - obrot prostpadłościanu o zadany kat" << "\n";
+    cout << "o - obrot bryly o zadane sekwencje" << "\n";
+    cout << "t - powtorzenie ostatniego obrotu" << "\n";
+    cout << "r - wyswietlenie macierzy rotacji \n";
     cout << "p - przesuniecie prostopadłościanu o zadany wektor" << "\n";
     cout << "w - wyswietlenie wspolrzednych wierzcholkow" << "\n";
     cout << "s - sprawdzenie dlugosci przeciwleglych bokow" << "\n";
@@ -22,17 +24,21 @@ int main() {
     bool end=true;
     Vector3d wek;
     Cuboid cub;
+    Matrix m;
     PzG::LaczeDoGNUPlota  Lacze;
     fstream file;
 
 
     menu();
-    cout<<"blabla"<<endl;
     while (end!=false) {
         cout << "\n";
         cout << "Twoj wybor? (m - menu) >";
         cin >> choice;
         switch (choice) {
+            case 't':
+                break;
+            case 'r':
+                break;
             case 'm':
                 menu();
                 break;
@@ -40,6 +46,7 @@ int main() {
                 end = false;
                 break;
             case 'o': //dopisać
+
                 break;
             case 'p': //brak zabezpieczen jesli wpisane litery
                 cout << "Wprowadz wspolrzedne wektora translacji w postaci trzech liczb\n"

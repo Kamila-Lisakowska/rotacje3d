@@ -88,3 +88,37 @@ void Cuboid::SaveToFile(fstream &file) {
 double Cuboid::getCoordinate(int a, int b) const {
     return coordinate[a][b];
 }
+
+void Cuboid::Rotate(Matrix &m) {
+    Matrix robocza;
+    char a;
+    bool end=true;
+    double angle;
+    int b;
+    cout <<"Podaj sekwencje oznaczen osi oraz katy obrotu w stopniach \n";
+    while (end!=false){
+        cin>>a;
+        cin>>angle;
+        if (a=='.')
+            end=false;
+        if (a=='x')
+            robocza.LoadMatrixOX(angle);
+        if (a=='y')
+            robocza.LoadMatrixOY(angle);
+        if (a=='z')
+            robocza.LoadMatrixOZ(angle);
+        ///
+
+
+        if  (a!='.'||a!='x'||a!='y'||a!='z')
+            cout<<":( Bledne oznaczenie osi. Dopuszczalne znaki to: x y z .\n :( Sprobuj jeszcze raz. \n";
+    }
+
+    cout <<"Ile razy operacja obrotu ma byc powtorzona? \n";
+    cin>>b;
+
+
+    }
+
+
+
