@@ -58,7 +58,7 @@ void Cuboid::ViewCoordinate() const {
 void Cuboid::Multiplication(Matrix m)  {
     for (int i = 0; i <8; i++) {
         for (int j = 0; j <3; j++) {
-            coordinate[i][j]=m.matrix[j][0]*coordinate[i][0]+m.matrix[j][1]*coordinate[i][1]+m.matrix[j][2]*coordinate[i][2];
+            coordinate[i][j]=m.getMatrix(j,0)*coordinate[i][0]+m.getMatrix(j,1)*coordinate[i][1]+m.getMatrix(j,2)*coordinate[i][2];
         }
     }
 }
@@ -83,4 +83,8 @@ void Cuboid::SaveToFile(fstream &file) {
         file<<coordinate[1][i]<<" ";
     }
 
+}
+
+double Cuboid::getCoordinate(int a, int b) const {
+    return coordinate[a][b];
 }

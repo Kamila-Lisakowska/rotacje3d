@@ -3,6 +3,7 @@
 #include <iomanip>
 #include "Vector3d.h"
 #include "Cuboid.h"
+#include "lacze_do_gnuplota.h"
 
 using namespace std;
 
@@ -21,10 +22,12 @@ int main() {
     bool end=true;
     Vector3d wek;
     Cuboid cub;
+    PzG::LaczeDoGNUPlota  Lacze;
     fstream file;
 
 
     menu();
+    cout<<"blabla"<<endl;
     while (end!=false) {
         cout << "\n";
         cout << "Twoj wybor? (m - menu) >";
@@ -58,6 +61,13 @@ int main() {
                     cout<<"Brak dostepu do pliku"<<endl;
                 file.close();
                     //wyświetlanie
+                Lacze.DodajNazwePliku("cuboid.dat",PzG::RR_Ciagly,1);
+                Lacze.Inicjalizuj();  // Tutaj startuje gnuplot.
+                Lacze.ZmienTrybRys(PzG::TR_3D);
+                Lacze.UstawZakresZ(-35,35);
+                Lacze.UstawZakresY(-35,35);
+                Lacze.UstawZakresX(-35,35);
+                Lacze.Rysuj();
                 break;
 
         }

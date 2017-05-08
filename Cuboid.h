@@ -12,8 +12,7 @@
 using namespace std;
 
 class Cuboid {
-//private:
-public:
+private:
     double coordinate[8][3];
 
 public:
@@ -23,6 +22,7 @@ public:
     void ViewCoordinate () const;
     void Multiplication (Matrix m);
     void SaveToFile (fstream &file);
+    double getCoordinate(int a, int b) const;
 };
 
 

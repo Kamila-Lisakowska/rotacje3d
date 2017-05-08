@@ -51,3 +51,7 @@ void Matrix::LoadMatrixOZ(double angle) {
     matrix[2][2]=cos(angle);
 }
 
+double Matrix::getMatrix(int a, int b) {
+    matrix[a][b];
+}
+
