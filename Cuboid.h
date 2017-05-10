@@ -24,6 +24,7 @@ public:
     void SaveToFile (fstream &file);
     double getCoordinate(int a, int b) const;
     void Rotate (Matrix &m);
+    void RepeatRotate(Matrix m);
 
 };
 

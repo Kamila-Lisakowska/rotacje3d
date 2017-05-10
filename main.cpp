@@ -36,8 +36,10 @@ int main() {
         cin >> choice;
         switch (choice) {
             case 't':
+                cub.RepeatRotate(m);
                 break;
             case 'r':
+                m.ShowMatrix();
                 break;
             case 'm':
                 menu();
@@ -46,7 +48,7 @@ int main() {
                 end = false;
                 break;
             case 'o': //dopisać
-
+                cub.Rotate(m);
                 break;
             case 'p': //brak zabezpieczen jesli wpisane litery
                 cout << "Wprowadz wspolrzedne wektora translacji w postaci trzech liczb\n"

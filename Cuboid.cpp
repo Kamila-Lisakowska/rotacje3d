@@ -90,7 +90,7 @@ double Cuboid::getCoordinate(int a, int b) const {
 }
 
 void Cuboid::Rotate(Matrix &m) {
-    Matrix robocza;
+    Matrix robocza, robocza2;
     char a;
     bool end=true;
     double angle;
@@ -107,18 +107,29 @@ void Cuboid::Rotate(Matrix &m) {
             robocza.LoadMatrixOY(angle);
         if (a=='z')
             robocza.LoadMatrixOZ(angle);
-        ///
 
+        robocza2=robocza2*robocza;
 
         if  (a!='.'||a!='x'||a!='y'||a!='z')
             cout<<":( Bledne oznaczenie osi. Dopuszczalne znaki to: x y z .\n :( Sprobuj jeszcze raz. \n";
     }
-
+    m=robocza2;
     cout <<"Ile razy operacja obrotu ma byc powtorzona? \n";
-    cin>>b;
-
-
+    end=true;
+    while (end!=false) {
+        cin >> b;
+        if (b < 0)
+            cout << "Podaj liczbe wieksza od zera  \n";
+        else end=false;
     }
+    for (int i = 0; i < b; ++i) {
+        Multiplication(m);
+    }
+    }
+
+void Cuboid::RepeatRotate(Matrix m) {
+    Multiplication(m);
+}
 
 
 
