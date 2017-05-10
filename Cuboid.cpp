@@ -91,41 +91,53 @@ double Cuboid::getCoordinate(int a, int b) const {
 
 void Cuboid::Rotate(Matrix &m) {
     Matrix robocza, robocza2;
-    char a;
-    bool end=true;
-    double angle;
-    int b;
-    cout <<"Podaj sekwencje oznaczen osi oraz katy obrotu w stopniach \n";
-    while (end!=false){
-        cin>>a;
-        cin>>angle;
-        if (a=='.')
-            end=false;
-        if (a=='x')
-            robocza.LoadMatrixOX(angle);
-        if (a=='y')
-            robocza.LoadMatrixOY(angle);
-        if (a=='z')
-            robocza.LoadMatrixOZ(angle);
+    char a = 'a';
+    bool end = true;
+    double angle = 0;
+    int b = 0;
+    cout << "Podaj sekwencje oznaczen osi oraz katy obrotu w stopniach \n";
+    while (end != false) {
+        cin >> a;
+        switch (a) {
+            case 'x':
+                cin >> angle;
+                robocza.LoadMatrixOX(angle);
+                robocza2 = robocza2 * robocza;
+                break;
+            case 'y':
+                cin >> angle;
+                robocza.LoadMatrixOY(angle);
+                robocza2 = robocza2 * robocza;
+                break;
+            case 'z':
+                cin >> angle;
+                robocza.LoadMatrixOZ(angle);
+                robocza2 = robocza2 * robocza;
+                break;
+            case '.':
+                end = false;
+                break;
+            default:
+                cout << ":( Bledne oznaczenie osi. Dopuszczalne znaki to: x y z .\n :( Sprobuj jeszcze raz. \n";
+                robocza2.Zero();
+                cin.sync();
+                break;
 
-        robocza2=robocza2*robocza;
-
-        if  (a!='.'||a!='x'||a!='y'||a!='z')
-            cout<<":( Bledne oznaczenie osi. Dopuszczalne znaki to: x y z .\n :( Sprobuj jeszcze raz. \n";
+        }
     }
-    m=robocza2;
-    cout <<"Ile razy operacja obrotu ma byc powtorzona? \n";
-    end=true;
-    while (end!=false) {
+    m = robocza2;
+    cout << "Ile razy operacja obrotu ma byc powtorzona? \n";
+    end = true;
+    while (end != false) {
         cin >> b;
         if (b < 0)
             cout << "Podaj liczbe wieksza od zera  \n";
-        else end=false;
+        else end = false;
     }
     for (int i = 0; i < b; ++i) {
         Multiplication(m);
     }
-    }
+}
 
 void Cuboid::RepeatRotate(Matrix m) {
     Multiplication(m);
