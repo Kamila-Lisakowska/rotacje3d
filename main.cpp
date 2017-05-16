@@ -12,13 +12,12 @@ void menu()
 {
     cout<<"Utworzonych wektorow:"<<Vector2d::howManyCreated<<"\n";
     cout<<"Istniejacych wektorow:"<<Vector2d::howManyNow<<"\n";
-    cout << "o - obrot bryly o zadane sekwencje" << "\n";
-    cout << "t - powtorzenie ostatniego obrotu" << "\n";
-    cout << "r - wyswietlenie macierzy rotacji \n";
-    cout << "p - przesuniecie prostopadłościanu o zadany wektor" << "\n";
-    cout << "w - wyswietlenie wspolrzednych wierzcholkow" << "\n";
-    cout << "s - sprawdzenie dlugosci przeciwleglych bokow" << "\n";
-    cout << "g - wyswietlenie prostopadłościanu"<<"\n";
+    cout << "o - obrot robota"<< "\n";
+    cout << "x - jazda robota do przodu" << "\n";
+    cout << "q - przesuniecie sceny" << "\n";
+    cout << "s - zmiana predkosci robota" << "\n";
+    cout << "r - powrót do pierwotnego widoku"<<"\n";
+    cout << "t - translacja"<<"\n";
     cout << "m - wyswietl menu" << "\n";
     cout << "k - koniec dzialania programu" << "\n";
 }
@@ -48,18 +47,18 @@ int main() {
             case 'k':
                 end = false;
                 break;
-            case 'o': //dopisać
+            case 'o':
                 cout << "Podaj kat obrotu w stopniach \n";
                 cin >> angle;
                 scena.rotate(angle);
                 break;
-            case 'p': //brak zabezpieczen jesli wpisane litery
+/*            case 'p': //brak zabezpieczen jesli wpisane litery
                 cout<<"Wprowadz wspolrzedna x"<<"\n";
                 cin >> vekX;
                 cout<<"Wprowadz wspolrzedna y"<<"\n";
                 cin >> vekY;
                 scena.move(Vector2d(vekX,vekY));
-                break;
+                break;*/
             case 'x':
                 cout<<"Wprowadz o ile robot ma isc do przodu"<<"\n";
                 cin >> go;
@@ -92,6 +91,9 @@ int main() {
                 cout<<"W osi Y\n";
                 cin>>howMuchY;
                 scena.translate(Vector2d(howMuchX,howMuchY));
+            default:
+                menu();
+                break;
         }
     }
     return 0;

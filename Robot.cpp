@@ -25,15 +25,6 @@ void Robot::move(Vector2d vector) {
 }
 
 
-void Robot::Multiplication(Matrix m) {
-    for (int i = 0; i < 3; i++) {
-        coordinate[i].setX(m.getMatrix(0, 0) * coordinate[i].getX() + m.getMatrix(0, 1) * coordinate[i].getY());
-        coordinate[i].setY(m.getMatrix(1, 0) * coordinate[i].getX() + m.getMatrix(1, 1) * coordinate[i].getY());
-    }
-}
-
-
-
 void Robot::saveToFile() {
     file.open("cuboid.dat", ios::out | ios::trunc);
     if (file.good()){

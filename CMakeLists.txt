@@ -9,8 +9,6 @@ set(SOURCE_FILES
         lacze_do_gnuplota.cpp
         lacze_do_gnuplota.h
         main.cpp
-        Matrix.cpp
-        Matrix.h
         Scena.cpp
         Scena.h
         Vector2d.cpp

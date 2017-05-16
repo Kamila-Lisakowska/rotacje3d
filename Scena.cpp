@@ -4,6 +4,7 @@
 
 #include "Scena.h"
 #include <chrono>
+#include <cmath>
 
 Scena::Scena() {
     lacze.DodajNazwePliku("cuboid.dat", PzG::RR_Ciagly, 1);
@@ -13,10 +14,6 @@ Scena::Scena() {
     lacze.UstawZakresY(-50, 50);
     lacze.UstawZakresX(-50, 50);
     speed=100;
-}
-
-PzG::LaczeDoGNUPlota Scena::getLacze() {
-    return PzG::LaczeDoGNUPlota();
 }
 
 void Scena::Rysuj() {
