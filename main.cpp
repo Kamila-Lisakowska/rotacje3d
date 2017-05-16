@@ -1,14 +1,17 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
-#include "Vector3d.h"
-#include "Cuboid.h"
+#include "Vector2d.h"
+#include "Robot.h"
 #include "lacze_do_gnuplota.h"
+#include "Scena.h"
 
 using namespace std;
 
 void menu()
 {
+    cout<<"Utworzonych wektorow:"<<Vector2d::howManyCreated<<"\n";
+    cout<<"Istniejacych wektorow:"<<Vector2d::howManyNow<<"\n";
     cout << "o - obrot bryly o zadane sekwencje" << "\n";
     cout << "t - powtorzenie ostatniego obrotu" << "\n";
     cout << "r - wyswietlenie macierzy rotacji \n";
@@ -19,28 +22,26 @@ void menu()
     cout << "m - wyswietl menu" << "\n";
     cout << "k - koniec dzialania programu" << "\n";
 }
+
+long Vector2d :: howManyCreated ;
+long Vector2d :: howManyNow ;
 int main() {
+
     char choice='m';
     bool end=true;
-    Vector3d wek;
-    Cuboid cub;
-    Matrix m;
-    PzG::LaczeDoGNUPlota  Lacze;
-    fstream file;
-
-
+    Scena scena;
+    double vekX;
+    double vekY;
+    double go;
+    float howMuchX;
+    float howMuchY;
     menu();
-    while (end!=false) {
+    while (end) {
         cout << "\n";
         cout << "Twoj wybor? (m - menu) >";
         cin >> choice;
+        double angle = 0;
         switch (choice) {
-            case 't':
-                cub.RepeatRotate(m);
-                break;
-            case 'r':
-                m.ShowMatrix();
-                break;
             case 'm':
                 menu();
                 break;
@@ -48,37 +49,49 @@ int main() {
                 end = false;
                 break;
             case 'o': //dopisać
-                cub.Rotate(m);
+                cout << "Podaj kat obrotu w stopniach \n";
+                cin >> angle;
+                scena.rotate(angle);
                 break;
             case 'p': //brak zabezpieczen jesli wpisane litery
-                cout << "Wprowadz wspolrzedne wektora translacji w postaci trzech liczb\n"
-                        "tzn. wspolrzednych: x y z"<<"\n";
-                cin >> wek;
-                cub.Move(wek);
+                cout<<"Wprowadz wspolrzedna x"<<"\n";
+                cin >> vekX;
+                cout<<"Wprowadz wspolrzedna y"<<"\n";
+                cin >> vekY;
+                scena.move(Vector2d(vekX,vekY));
                 break;
-            case 'w':
-                cub.ViewCoordinate();
+            case 'x':
+                cout<<"Wprowadz o ile robot ma isc do przodu"<<"\n";
+                cin >> go;
+                scena.go(go);
+                break;
+            case 'q':
+                cout<<"O ile przesunac scene?\n";
+
+                cout<<"W osi X\n";
+                cin>>howMuchX;
+                cout<<"W osi Y\n";
+                cin>>howMuchY;
+                scena.changeScene(howMuchX,howMuchY);
                 break;
             case 's':
-                cub.Sides();
+                cout<<"Podaj predkosc\n";
+                cout<<"Podaj wartosc z zakresu 10-50\n";
+                int speed;
+                cin>>speed;
+                scena.setSpeed(speed);
                 break;
-            case 'g':
-                file.open("cuboid.dat",ios::out | ios::trunc);
-                if(file.good()==true)
-                    cub.SaveToFile(file);
-                else
-                    cout<<"Brak dostepu do pliku"<<endl;
-                file.close();
-                    //wyświetlanie
-                Lacze.DodajNazwePliku("cuboid.dat",PzG::RR_Ciagly,1);
-                Lacze.Inicjalizuj();  // Tutaj startuje gnuplot.
-                Lacze.ZmienTrybRys(PzG::TR_3D);
-                Lacze.UstawZakresZ(-35,35);
-                Lacze.UstawZakresY(-35,35);
-                Lacze.UstawZakresX(-35,35);
-                Lacze.Rysuj();
+            case 'r':
+                cout<<"Powracam do domyslnego widoku\n";
+                scena.defaultScene();
                 break;
-
+            case 't':
+                cout<<"O ile wykonac translacje?\n";
+                cout<<"W osi X\n";
+                cin>>howMuchX;
+                cout<<"W osi Y\n";
+                cin>>howMuchY;
+                scena.translate(Vector2d(howMuchX,howMuchY));
         }
     }
     return 0;

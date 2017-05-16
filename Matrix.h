@@ -17,7 +17,6 @@ public:
     Matrix();
     void LoadMatrixOX (double angle);
     void LoadMatrixOY (double angle);
-    void LoadMatrixOZ (double angle);
     double getMatrix (int a, int b);
     void ShowMatrix () const;
     Matrix operator * (Matrix b);

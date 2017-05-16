@@ -6,26 +6,23 @@
 #define ROTACJE3D_CUBOID_H
 
 #include <iostream>
-#include "Vector3d.h"
+#include "Vector2d.h"
 #include "Matrix.h"
+#include "Path.h"
 
 using namespace std;
 
-class Cuboid {
+class Robot{
 private:
-    double coordinate[8][3];
-
+    Vector2d coordinate[3];
+    fstream file;
 public:
-    Cuboid ();
-    void Sides () const;
-    void Move (Vector3d vector3d);
-    void ViewCoordinate () const;
+    Robot ();
+    void move(Vector2d vector);
     void Multiplication (Matrix m);
-    void SaveToFile (fstream &file);
+    void saveToFile ();
     double getCoordinate(int a, int b) const;
-    void Rotate (Matrix &m);
-    void RepeatRotate(Matrix m);
-
+    void setCoordinate(int a, int b,double value);
 };
 
 

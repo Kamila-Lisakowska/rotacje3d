@@ -7,21 +7,28 @@
 
 
 #include "Matrix.h"
-#include "Cuboid.h"
-
+#include "Robot.h"
+#include "lacze_do_gnuplota.h"
+#include "Path.h"
+#include <fstream>
 class Scena {
 private:
-    Matrix mat;
-    Cuboid cub;
+    PzG::LaczeDoGNUPlota lacze;
+    Robot robot;
+    Path path;
+    int speed;
+    vector<Path> objects;
 public:
-    const Matrix &getMat() const;
-
-    void setMat(const Matrix &mat);
-
-    const Cuboid &getCub() const;
-
-    void setCub(const Cuboid &cub);
-
+    Scena();
+    PzG::LaczeDoGNUPlota getLacze();
+    void Rysuj();
+    void go(double howFar);
+    void rotate(double angle);
+    void move(Vector2d vector);
+    void setSpeed(int speed);
+    void changeScene(float x, float y);
+    void defaultScene();
+    void translate(Vector2d vector);
 };
 
 

@@ -1,7 +1,19 @@
 cmake_minimum_required(VERSION 3.7)
-project(rotacje3d)
+project(robot)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES main.cpp Cuboid.cpp Cuboid.h Vector3d.cpp Vector3d.h Matrix.cpp Matrix.h lacze_do_gnuplota.cpp lacze_do_gnuplota.h Scena.cpp Scena.h)
-add_executable(rotacje3d ${SOURCE_FILES})
+set(SOURCE_FILES
+        Robot.cpp
+        Robot.h
+        lacze_do_gnuplota.cpp
+        lacze_do_gnuplota.h
+        main.cpp
+        Matrix.cpp
+        Matrix.h
+        Scena.cpp
+        Scena.h
+        Vector2d.cpp
+        Vector2d.h Path.cpp Path.h)
+
+add_executable(robot ${SOURCE_FILES})
